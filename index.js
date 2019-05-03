@@ -72,7 +72,7 @@ var MssqlDriver = Base.extend({
   allLoadedMigrations: function(callback) {
     var sql = `SELECT * FROM [${internals.migrationTable}] ORDER BY run_on DESC, name DESC`;
     return this.all(sql).then(function(result) {
-      return callback((result.recordset) ? result.recordset : [], null);
+      return callback((result) ? result : [], null);
     }).catch(function(err) {
       return callback(null, err); // figureout callback params
     });
