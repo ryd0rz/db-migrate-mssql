@@ -1,17 +1,48 @@
 {
-  "name": "db-migrate-mssql",
-  "version": "1.0.3",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
-  "dependencies": {
-    "bluebird": "^3.5.3",
-    "db-migrate-base": "^1.6.3",
-    "moment": "^2.24.0",
-    "mssql": "^5.0.3"
-  }
+    "name": "db-migrate-mssql",
+    "version": "2.0.0",
+    "description": "A mssql driver for db-migrate",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/ryd0rz/db-migrate-mssql.git"
+    },
+    "keywords": [
+        "db-migrate",
+        "migrate",
+        "migration",
+        "mssql",
+        "sql",
+        "database",
+        "db",
+        "migrator",
+        "driver"
+    ],
+    "author": "ryd0rz",
+    "contributors": [
+        "christiaanwesterbeek"
+    ],
+    "license": "MIT",
+    "bugs": {
+        "url": "https://github.com/ryd0rz/db-migrate-mssql/issues"
+    },
+    "homepage": "https://github.com/ryd0rz/db-migrate-mssql",
+    "dependencies": {
+        "bluebird": "^3.5.4",
+        "db-migrate-base": "^1.6.3",
+        "mssql": "6.0.0-beta.1"
+    },
+    "devDependencies": {
+        "db-meta": "^0.5.1",
+        "db-migrate-shared": "^1.2.0",
+        "eslint": "5.16.0",
+        "eslint-config-standard": "12.0.0",
+        "eslint-plugin-import": "2.17.0",
+        "eslint-plugin-node": "8.0.1",
+        "eslint-plugin-promise": "4.1.1",
+        "eslint-plugin-standard": "4.0.0"
+    }
 }
