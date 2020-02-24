@@ -284,6 +284,33 @@ var MssqlDriver = Base.extend({
     return this.runSql(sql).nodeify(callback);
   },
 
+  addColumn: function(tableName, columnName, columnSpec, callback) {
+    var columnSpec = this.normalizeColumnSpec(columnSpec);
+    this._prepareSpec(columnName, columnSpec, {}, tableName);
+    var def = this.createColumnDef(columnName, columnSpec, {}, tableName);
+    var extensions = '';
+    var self = this;
+
+    if (typeof this._applyAddColumnExtension === 'function') {
+      extensions = this._applyAddColumnExtension(def, tableName, columnName);
+    }
+
+    var sql = util.format(
+      'ALTER TABLE %s ADD %s %s',
+      this.escapeDDL(tableName),
+      def.constraints,
+      extensions
+    );
+
+    return this.runSql(sql)
+      .then(function() {
+        var callbacks = def.callbacks || [];
+        if (def.foreignKey) callbacks.push(def.foreignKey);
+        return self.recurseCallbackArray(callbacks);
+      })
+      .nodeify(callback);
+  },
+
   renameColumn: function (tableName, oldColumnName, newColumnName, callback) {
     var sql = `
       IF EXISTS (
